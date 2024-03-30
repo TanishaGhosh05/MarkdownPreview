@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
+   />
+   <link rel="stylesheet" href="./style.css">
+    <script 
+    crossorigin 
+    src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+<script 
+crossorigin
+ src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+ ></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <title>Markdown Previewer</title>
+<style>
+  button {
+    margin-left: 40px; 
+     }
+     .button-container {
+            margin-top: 20px; /* Add margin above the buttons */
+            margin-bottom: 20px; /* Add margin below the buttons */
+            #sample {
+    padding-left: 20px; /* Add padding to the left of the text */
+  }
+     }
+  </style>
+ </head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="./index.js"></script>
+<div style="border: 2px solid rgb(107, 122, 241);border-radius: 20px; width: 85%; margin-left:80px">
+<h4>&nbsp;&emsp;&emsp;Refer to this ToolBar for Markdown Syntax:</h4>
+
+  <div class="button-container">
+    <button onclick="clearText()">Clear Text</button>
+  <button onclick="changeText('bold')">Bold</button>
+  <button onclick="changeText('italic')">Italic</button>
+  <button onclick="changeText('strikethrough')">Strikethrough</button>
+  <button onclick="changeText('quote')">Quote</button>
+  <button onclick="changeText('tasklist')">Task List</button>
+  <button onclick="changeText('H1')">H1</button>
+  <button onclick="changeText('H2')">H2</button>
+  <button onclick="changeText('H3')">H3</button>
+  <button onclick="changeText('link')">Link</button>
+  <button onclick="changeText('image')">Image</button>
+  <button onclick="changeText('code')">Code</button>
+</div>
+  <p id="sample">&emsp;&emsp;&emsp;This is sample text</p>
+</div>
+  <script>
+   function clearText() {
+     document.getElementById("sample").innerText = "";
+   }
+
+   function changeText(style) {
+       var newText = "";
+       switch (style) {
+           case 'bold':
+               newText = "**put your text here**";
+               break;
+           case 'italic':
+               newText = "_put your text here_";
+               break;
+           case 'strikethrough':
+               newText = "~put your text here~";
+               break;
+           case 'quote':
+               newText = ">put your text here";
+               break;
+           case 'tasklist':
+               newText = "-put your text here";
+               break;
+           case 'H1':
+               newText = "# put your text here";
+               break;
+           case 'H2':
+               newText = "## put your text here";
+               break;
+           case 'H3':
+               newText = "### put your text here";
+               break;
+           case 'link':
+               newText = "[title](url)";
+               break;
+           case 'image':
+               newText = "![alt text](image.jpg)";
+               break;
+           case 'code' :
+               newText = "` put your text here`";
+           default:
+               break;
+               }
+       var sampleElement = document.getElementById("sample");
+       sampleElement.innerText = newText;
+       sampleElement.style.paddingLeft = "50px"; // Add padding to the left
+      }
+  </script>
+</body>
+</html>
